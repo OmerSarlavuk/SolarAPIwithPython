@@ -1,17 +1,20 @@
 import pymssql
 import json
 from Utils import Messages
-
+from Utils.EncodedDataAlgorithms import EncodedDataAlgorithms
 
 #Docker Container _ SQL Server Information 
 with open('appsettings.json', 'r') as f:
     settings = json.load(f)
 
-server = settings['database']['server']
-port = settings['database']['port']
-database = settings['database']['name']
-username = settings['database']['username']
-password = settings['database']['password']
+algo = EncodedDataAlgorithms()
+key  = settings['encoded_data_algorithms_key']['key']
+
+server = algo.decrypt_text(settings['database']['server'], key)
+port = algo.decrypt_text(settings['database']['port'], key)
+database = algo.decrypt_text(settings['database']['name'], key)
+username = algo.decrypt_text(settings['database']['username'], key)
+password = algo.decrypt_text(settings['database']['password'], key)
 
 messages = Messages
 
