@@ -1,13 +1,17 @@
 import pymssql
+import json
 from Utils import Messages
 
 
 #Docker Container _ SQL Server Information 
-server = '10.19.10.194'
-port = '1433'
-database = 'SolarDb' 
-username = 'sa'
-password = 'password123..'
+with open('appsettings.json', 'r') as f:
+    settings = json.load(f)
+
+server = settings['database']['server']
+port = settings['database']['port']
+database = settings['database']['name']
+username = settings['database']['username']
+password = settings['database']['password']
 
 messages = Messages
 
