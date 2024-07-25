@@ -1,6 +1,6 @@
 from flask import Flask, Response, json, request
-from Business import SolarDataBusinessProcess
-from Business import CitiesCoordinateBusinessProcess
+from Business import SolarDataBusinessProcess as solar_data_business_process 
+from Business import CitiesCoordinateBusinessProcess as cities_coordinate_business_process
 from Models.SolarData.SolarDataPostDto import SolarDataPostDto
 from Models.SolarData.SolarPutDto import SolarPutDto
 from Models.CitiesCoordinate.CitiesCoordinatePostDto import CitiesCoordinatePostDto
@@ -10,8 +10,6 @@ from Models.CitiesCoordinate.CitiesCoordinatePutDto import CitiesCoordinatePutDt
 #Ancak her bir modelin kendi businessı oluşturuldu maplame vs orada yapılıyor.
 
 app = Flask(__name__)
-solar_data_business_process = SolarDataBusinessProcess
-cities_coordinate_business_process = CitiesCoordinateBusinessProcess
 
 #---------------SolarDatas------------------
 
